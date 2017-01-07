@@ -51,6 +51,9 @@ class MainActivity : Activity() {
                         "echo > $usb/f_mass_storage/lun0/file",
                         "echo $ro > $usb/f_mass_storage/lun0/ro",
                         "echo $file > $usb/f_mass_storage/lun0/file",
+                        "echo > $usb/f_mass_storage/lun/file",
+                        "echo $ro > $usb/f_mass_storage/lun/ro",
+                        "echo $file > $usb/f_mass_storage/lun/file",
                         "echo success"
                 )).isEmpty()) {
                     return 0
