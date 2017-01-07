@@ -20,8 +20,9 @@ class MainActivity : Activity() {
         mPrefs = fragmentManager.findFragmentById(R.id.prefs) as HostPreferenceFragment
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, resultData: Intent) {
-        mPrefs!!.onActivityResult(requestCode, resultCode, resultData)
+    override fun onActivityResult(requestCode: Int, resultCode: Int, resultData: Intent?) {
+        val appContext = applicationContext as HorseDildoApplication
+        appContext.onActivityResult(requestCode, resultCode, resultData)
     }
 
     @Suppress("unused")
