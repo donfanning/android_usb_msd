@@ -1,5 +1,6 @@
-# android_usb_msd
-A helper application to set the Mass Storage Device gadget up in Android kernels
+# USB Mountr
+A helper application to set the Mass Storage Device gadget up in Android kernels  
+![Screenshot](/screenshot.png?raw=true)
 
 ## How it works
 Android kernels still include a USB MSD component in their device gadget nowadays, though it is mostly unused since
