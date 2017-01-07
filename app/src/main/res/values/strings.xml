@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">HorseDildo</string>
+
+    <string name="file_picker_nofile">None</string>
+
+    <string name="host_source_file">Image file</string>
+    <string name="host_ro">Read-only</string>
+    <string name="host_ro_summary">Prevent the PC from writing to the image</string>
+    <string name="host_serve">Host</string>
+    <string name="host_help">You just lost the game.</string>
+</resources>

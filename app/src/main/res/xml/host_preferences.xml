@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <party.wank.horsedildo.FilePickerPreference
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:defaultValue=""
+        android:key="host_source_file"
+        android:title="@string/host_source_file"
+        android:onClick="sourceOnClick" />
+
+    <SwitchPreference
+        android:defaultValue="true"
+        android:title="@string/host_ro"
+        android:key="host_ro"
+        android:summary="@string/host_ro_summary" />
+</PreferenceScreen>
