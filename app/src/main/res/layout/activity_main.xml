@@ -22,6 +22,15 @@
         android:onClick="onServeClicked"
         android:id="@+id/serve" />
 
+    <Button
+        android:text="@string/host_disable"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/disable"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:onClick="onDisableClicked" />
+
     <Space
         android:layout_width="match_parent"
         android:layout_height="@dimen/activity_vertical_spacing" />

@@ -7,10 +7,11 @@
     <string name="host_ro">Read-only</string>
     <string name="host_ro_summary">Prevent the PC from writing to the image</string>
     <string name="host_serve">Host</string>
+    <string name="host_disable">Unmount</string>
     <string name="host_help">This application will try to coexist with Android\'s USB services,
-        but the system is very likely to override its effects at any moment.\n\nToggle any system
-        USB feature (tethering, ADB…) to disable the mass storage gadget.</string>
+        but the system is very likely to override its effects at any moment.</string>
 
     <string name="host_success">The device should now show up on your PC</string>
+    <string name="host_disable_success">The device should now disappear from your PC</string>
     <string name="host_noroot">Couldn\'t get root access</string>
 </resources>

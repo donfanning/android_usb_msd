@@ -27,47 +27,62 @@ class MainActivity : Activity() {
 
     @Suppress("unused")
     fun onServeClicked(@Suppress("UNUSED_PARAMETER") v: View) {
-        object: AsyncTask<Void, Void, Int>() {
-            override fun doInBackground(vararg params: Void): Int {
-                val usb = "/sys/class/android_usb/android0"
+        // Escape the file name to avoid bugs in the shell
+        // Could use some finer filters but who cares
+        val file = "(.)".toRegex().replace(
+                mPrefs!!.preferenceManager.sharedPreferences
+                        .getString(mPrefs!!.SOURCE_KEY, ""),
+                "\\\\$1")
 
-                // Escape the file name to avoid bugs in the shell
-                // Could use some finer filters but who cares
-                val file = "(.)".toRegex().replace(
-                        mPrefs!!.preferenceManager.sharedPreferences
-                                .getString(mPrefs!!.SOURCE_KEY, ""),
-                        "\\\\$1")
+        val ro = if (mPrefs!!.preferenceManager.sharedPreferences
+                .getBoolean(mPrefs!!.RO_KEY, true)) "1" else "0"
 
-                val ro = if (mPrefs!!.preferenceManager.sharedPreferences
-                        .getBoolean(mPrefs!!.RO_KEY, true)) "1" else "0"
+        UsbScript().execute(file, ro, "1")
+    }
 
-                if (!Shell.SU.run(arrayOf(
-                        "echo 0 > $usb/enable",
-                        // Try to append if the function is not already enabled (by ourselves most likely)
-                        "grep mass_storage $usb/functions > /dev/null || sed -e 's/$/,mass_storage/' $usb/functions | cat > $usb/functions",
-                        // If empty, set ourselves as the only function
-                        "[[ -z $(cat $usb/functions) ]] && echo mass_storage > $usb/functions",
-                        "echo disk > $usb/f_mass_storage/luns",
-                        "echo 1 > $usb/enable",
-                        "echo > $usb/f_mass_storage/lun0/file",
-                        "echo $ro > $usb/f_mass_storage/lun0/ro",
-                        "echo $file > $usb/f_mass_storage/lun0/file",
-                        // Older kernels only support a single lun, cope with it
-                        "echo > $usb/f_mass_storage/lun/file",
-                        "echo $ro > $usb/f_mass_storage/lun/ro",
-                        "echo $file > $usb/f_mass_storage/lun/file",
-                        "echo success"
-                )).isEmpty()) {
-                    return 0
+    @Suppress("unused")
+    fun onDisableClicked(@Suppress("UNUSED_PARAMETER") v: View) {
+        UsbScript().execute("", "1", "0")
+    }
+
+    inner class UsbScript : AsyncTask<String, Void, Int>() {
+        override fun doInBackground(vararg params: String): Int {
+            val usb = "/sys/class/android_usb/android0"
+            val file = params[0]
+            val ro = params[1]
+            val enable = params[2]
+
+            if (!Shell.SU.run(arrayOf(
+                    "echo 0 > $usb/enable",
+                    // Try to append if the function is not already enabled (by ourselves most likely)
+                    "grep mass_storage $usb/functions > /dev/null || sed -e 's/$/,mass_storage/' $usb/functions | cat > $usb/functions",
+                    // If empty, set ourselves as the only function
+                    "[[ -z $(cat $usb/functions) ]] && echo mass_storage > $usb/functions",
+                    // Disable the feature if told to
+                    "[[ 0 == $enable ]] && sed -e 's/mass_storage//' $usb/functions | cat > $usb/functions",
+                    "echo disk > $usb/f_mass_storage/luns",
+                    "echo 1 > $usb/enable",
+                    "echo > $usb/f_mass_storage/lun0/file",
+                    "echo $ro > $usb/f_mass_storage/lun0/ro",
+                    "echo $file > $usb/f_mass_storage/lun0/file",
+                    // Older kernels only support a single lun, cope with it
+                    "echo > $usb/f_mass_storage/lun/file",
+                    "echo $ro > $usb/f_mass_storage/lun/ro",
+                    "echo $file > $usb/f_mass_storage/lun/file",
+                    "echo success"
+            )).isEmpty()) {
+                if (enable != "0") {
+                    return R.string.host_success
                 } else {
-                    return 1
+                    return R.string.host_disable_success
                 }
+            } else {
+                return R.string.host_noroot
             }
+        }
 
-            override fun onPostExecute(result: Int?) {
-                val str = if (result == 0) R.string.host_success else R.string.host_noroot
-                Toast.makeText(applicationContext, getString(str), Toast.LENGTH_SHORT).show()
-            }
-        }.execute()
+        override fun onPostExecute(result: Int) {
+            Toast.makeText(applicationContext, getString(result), Toast.LENGTH_SHORT).show()
+        }
     }
 }
