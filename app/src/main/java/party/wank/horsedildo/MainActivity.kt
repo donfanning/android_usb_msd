@@ -40,24 +40,28 @@ class MainActivity : Activity() {
                 val ro = if (mPrefs!!.preferenceManager.sharedPreferences
                         .getBoolean(mPrefs!!.RO_KEY, true)) "1" else "0"
 
-                Shell.SU.run(arrayOf(
+                if (!Shell.SU.run(arrayOf(
                         "echo 0 > $usb/enable",
                         // Try to append if the function is not already enabled (by ourselves most likely)
-                        "grep mass_storage $usb/functions || sed -e 's/$/,mass_storage/' $usb/functions | cat > $usb/functions",
+                        "grep mass_storage $usb/functions > /dev/null || sed -e 's/$/,mass_storage/' $usb/functions | cat > $usb/functions",
                         // If empty, set ourselves as the only function
                         "[[ -z $(cat $usb/functions) ]] && echo mass_storage > $usb/functions",
                         "echo disk > $usb/f_mass_storage/luns",
                         "echo 1 > $usb/enable",
                         "echo > $usb/f_mass_storage/lun0/file",
                         "echo $ro > $usb/f_mass_storage/lun0/ro",
-                        "echo $file > $usb/f_mass_storage/lun0/file"
-                ))
-
-                return 0
+                        "echo $file > $usb/f_mass_storage/lun0/file",
+                        "echo success"
+                )).isEmpty()) {
+                    return 0
+                } else {
+                    return 1
+                }
             }
 
             override fun onPostExecute(result: Int?) {
-                Toast.makeText(applicationContext, "Mounted", Toast.LENGTH_SHORT).show()
+                val str = if (result == 0) R.string.host_success else R.string.host_noroot
+                Toast.makeText(applicationContext, getString(str), Toast.LENGTH_SHORT).show()
             }
         }.execute()
     }

@@ -8,4 +8,7 @@
     <string name="host_ro_summary">Prevent the PC from writing to the image</string>
     <string name="host_serve">Host</string>
     <string name="host_help">You just lost the game.</string>
+
+    <string name="host_success">The device should now show up on your PC</string>
+    <string name="host_noroot">Couldn\'t get root access</string>
 </resources>
