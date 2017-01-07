@@ -13,23 +13,29 @@
         android:name="party.wank.horsedildo.HostPreferenceFragment"
         android:id="@+id/prefs" />
 
-    <Button
-        android:text="@string/host_serve"
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:layout_marginRight="@dimen/activity_horizontal_margin"
-        android:onClick="onServeClicked"
-        android:id="@+id/serve" />
+        android:layout_marginRight="@dimen/activity_horizontal_margin">
 
-    <Button
-        android:text="@string/host_disable"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/disable"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:layout_marginRight="@dimen/activity_horizontal_margin"
-        android:onClick="onDisableClicked" />
+        <Button
+            android:text="@string/host_serve"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onServeClicked"
+            android:id="@+id/serve"
+            android:layout_weight="1" />
+
+        <Button
+            android:text="@string/host_disable"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/disable"
+            android:onClick="onDisableClicked"
+            android:layout_weight="1" />
+    </LinearLayout>
 
     <Space
         android:layout_width="match_parent"
