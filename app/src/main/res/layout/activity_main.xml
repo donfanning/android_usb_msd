@@ -14,38 +14,46 @@
         android:id="@+id/prefs" />
 
     <LinearLayout
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
         android:layout_marginRight="@dimen/activity_horizontal_margin">
 
-        <Button
-            android:text="@string/host_serve"
+        <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="onServeClicked"
-            android:id="@+id/serve"
-            android:layout_weight="1" />
+            android:layout_height="wrap_content">
 
-        <Button
-            android:text="@string/host_disable"
+            <Button
+                android:text="@string/host_serve"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="onServeClicked"
+                android:id="@+id/serve"
+                android:layout_weight="1"
+                tools:ignore="ButtonStyle" />
+
+            <Button
+                android:text="@string/host_disable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/disable"
+                android:onClick="onDisableClicked"
+                android:layout_weight="1"
+                tools:ignore="ButtonStyle" />
+        </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/activity_vertical_spacing" />
+
+        <TextView
+            android:text="@string/host_help"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/disable"
-            android:onClick="onDisableClicked"
-            android:layout_weight="1" />
+            android:id="@+id/help" />
+
     </LinearLayout>
 
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/activity_vertical_spacing" />
-
-    <TextView
-        android:text="@string/host_help"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:layout_marginRight="@dimen/activity_horizontal_margin"
-        android:id="@+id/help" />
 </LinearLayout>
