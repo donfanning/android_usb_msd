@@ -1,8 +1,12 @@
 <resources>
     <string name="app_name">USB Mountr</string>
 
+    <string name="licenses">Licenses</string>
+    <string name="licenses_upstream">Upstream source</string>
+
     <string name="file_picker_nofile">None</string>
 
+    <!-- Visible in the activity -->
     <string name="host_source_file">Image file</string>
     <string name="host_ro">Read-only</string>
     <string name="host_ro_summary">Prevent the PC from writing to the image</string>
@@ -11,6 +15,7 @@
     <string name="host_help">This application will try to coexist with Android\'s USB services,
         but the system is very likely to override its effects at any moment.</string>
 
+    <!-- Toast messages -->
     <string name="host_success">The device should now show up on your PC</string>
     <string name="host_disable_success">The device should now disappear from your PC</string>
     <string name="host_noroot">Couldn\'t get root access</string>

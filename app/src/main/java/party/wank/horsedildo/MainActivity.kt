@@ -4,6 +4,8 @@ import android.app.Activity
 import android.content.Intent
 import android.os.AsyncTask
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import eu.chainfire.libsuperuser.Shell
@@ -18,6 +20,23 @@ class MainActivity : Activity() {
         setContentView(R.layout.activity_main)
 
         mPrefs = fragmentManager.findFragmentById(R.id.prefs) as HostPreferenceFragment
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.menu_main, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.menu_licenses -> {
+                val intent = Intent(this, LicenseActivity::class.java)
+                startActivity(intent)
+            }
+            else -> return super.onOptionsItemSelected(item)
+        }
+
+        return true
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, resultData: Intent?) {
