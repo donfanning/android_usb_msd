@@ -1,4 +1,4 @@
-package party.wank.horsedildo
+package streetwalrus.usbmountr
 
 import android.app.Activity
 import android.content.Context
@@ -23,7 +23,7 @@ class FilePickerPreference : Preference, ActivityResultDispatcher.ActivityResult
     private var mActivityResultId = -1
 
     init {
-        val appContext = context.applicationContext as HorseDildoApplication
+        val appContext = context.applicationContext as UsbMountrApplication
         mActivityResultId = appContext.mActivityResultDispatcher.registerHandler(this)
     }
 
@@ -34,7 +34,7 @@ class FilePickerPreference : Preference, ActivityResultDispatcher.ActivityResult
     override fun onPrepareForRemoval() {
         super.onPrepareForRemoval()
 
-        val appContext = context.applicationContext as HorseDildoApplication
+        val appContext = context.applicationContext as UsbMountrApplication
         appContext.mActivityResultDispatcher.removeHandler(mActivityResultId)
     }
 

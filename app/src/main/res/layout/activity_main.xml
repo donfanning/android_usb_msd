@@ -5,12 +5,12 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="party.wank.horsedildo.MainActivity">
+    tools:context="streetwalrus.usbmountr.MainActivity">
 
     <fragment
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:name="party.wank.horsedildo.HostPreferenceFragment"
+        android:name="streetwalrus.usbmountr.HostPreferenceFragment"
         android:id="@+id/prefs" />
 
     <LinearLayout

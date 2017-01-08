@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <party.wank.horsedildo.FilePickerPreference
+    <streetwalrus.usbmountr.FilePickerPreference
         android:key="host_source_file"
         android:title="@string/host_source_file"
         android:onClick="sourceOnClick" />

@@ -1,4 +1,4 @@
-package party.wank.horsedildo
+package streetwalrus.usbmountr
 
 import android.os.Bundle
 import android.preference.PreferenceFragment

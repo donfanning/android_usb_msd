@@ -1,4 +1,4 @@
-package party.wank.horsedildo
+package streetwalrus.usbmountr
 
 import android.app.Activity
 import android.content.Intent
@@ -40,7 +40,7 @@ class MainActivity : Activity() {
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, resultData: Intent?) {
-        val appContext = applicationContext as HorseDildoApplication
+        val appContext = applicationContext as UsbMountrApplication
         appContext.onActivityResult(requestCode, resultCode, resultData)
     }
 

@@ -5,7 +5,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="party.wank.horsedildo.LicenseActivity">
+    tools:context="streetwalrus.usbmountr.LicenseActivity">
 
     <ListView
         android:layout_width="match_parent"

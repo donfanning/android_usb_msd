@@ -1,9 +1,9 @@
-package party.wank.horsedildo
+package streetwalrus.usbmountr
 
 import android.app.Application
 import android.content.Intent
 
-class HorseDildoApplication : Application() {
+class UsbMountrApplication : Application() {
     val mActivityResultDispatcher: ActivityResultDispatcher = ActivityResultDispatcher()
 
     fun onActivityResult(requestCode: Int, resultCode: Int, resultData: Intent?) {

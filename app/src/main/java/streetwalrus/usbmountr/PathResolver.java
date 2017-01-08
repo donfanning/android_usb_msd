@@ -1,4 +1,4 @@
-package party.wank.horsedildo;
+package streetwalrus.usbmountr;
 
 import android.content.ContentUris;
 import android.content.Context;

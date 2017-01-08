@@ -1,4 +1,4 @@
-package party.wank.horsedildo
+package streetwalrus.usbmountr
 
 import android.app.Activity
 import android.app.AlertDialog
